@@ -8,9 +8,9 @@ It uses a virtual machine that executes pseudo-random instructions that produce 
 ### Seed
 
 The seed is used to determine which instructions in what order are used on the user data.   
-The first 7 charachters of the Blake2b hash of the input, plus a parity bit determine the seed.
+The first 8 charachters of the Blake2b hash of the input determine the seed.
 
-## Instruction set
+### The Instruction Set
 
 |instruction|dst|src|`src == dst ?`|operation|
 |-|-|-|-|-|

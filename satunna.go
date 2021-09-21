@@ -1,1 +1,0 @@
-satunna.go
