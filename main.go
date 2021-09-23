@@ -1,4 +1,4 @@
-package satunna
+package main;
 
 import (
 	//"golang.org/x/crypto/blake2b"
