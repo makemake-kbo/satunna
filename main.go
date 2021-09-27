@@ -13,5 +13,12 @@ func main() {
 	 */
 	inputData := os.Args[1];
 
-	fmt.Println(inputData);
+	file, err := os.Open(inputData);
+
+	if checkIfFile(err) {
+		fmt.Println("File cant be read, hashing as string");
+	} else {
+		fmt.Println(deriveSeedFromFile(file));
+	}
+
 }
