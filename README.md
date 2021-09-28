@@ -11,7 +11,7 @@ It uses a virtual machine that executes pseudo-random instructions that produce 
 
 #### Seed
 
-The seed is used to determine which instructions in what order are used on the user data.   
+The seed is used to determine which instructions in what order are used on the inputed data.   
 The seed is a positive intenger derived from the first 16 bytes of the blake2b hash of the file(or string).
 
 #### The Instruction Set
