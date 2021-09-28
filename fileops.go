@@ -14,6 +14,7 @@ func panicOnFail(e error) {
 	}
 }
 
+
 /*returns true if file can be read, else false*/
 func checkIfFile(e error) bool {
 	if e != nil {
