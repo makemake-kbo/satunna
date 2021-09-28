@@ -3,14 +3,20 @@
 `satunna` is a reproducible pseudo-random code execution hashing algo.   
 It uses a virtual machine that executes pseudo-random instructions that produce a 256-bit Blake2b cryptographic hash.   
 
-## The Virtual Machine
+## Specifications
 
-### Seed
+***__SPECS ARE WIP AND ARE SUBJECT TO CHANGE__***
+
+### The Virtual Machine
+
+#### Seed
 
 The seed is used to determine which instructions in what order are used on the user data.   
-The first 8 charachters of the Blake2b hash of the input determine the seed.
+The seed is a positive intenger derived from the first 16 bytes of the blake2b hash of the file(or string).
 
-### The Instruction Set
+#### The Instruction Set
+
+The current VM instruction set is being worked on as satunna is being developed.
 
 |instruction|dst|src|`src == dst ?`|operation|
 |-|-|-|-|-|
