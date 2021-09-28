@@ -17,8 +17,8 @@ func panicOnFail(e error) {
 /*returns true if file can be read, else false*/
 func checkIfFile(e error) bool {
 	if e != nil {
-		fmt.Println(e);
-		return false;
+		return true;
 	}
-	return true;
+	fmt.Println(e);
+	return false;
 }

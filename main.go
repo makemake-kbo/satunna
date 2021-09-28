@@ -18,7 +18,7 @@ func main() {
 	if checkIfFile(err) {
 		fmt.Println("File cant be read, hashing as string");
 	} else {
-		fmt.Println(deriveSeedFromFile(file));
+		fmt.Println("xd", deriveSeedFromFile(file));
 	}
 
 }
