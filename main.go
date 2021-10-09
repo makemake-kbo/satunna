@@ -4,6 +4,8 @@ import (
 	//"golang.org/x/crypto/blake2b"
 	"os"
 	"fmt"
+	
+	"github.com/makemake-kbo/satunna/vm"
 )
 
 func main() {
@@ -20,6 +22,7 @@ func main() {
 		fmt.Println("string", deriveSeedFromString(inputData));
 	} else {
 		fmt.Println("xd", deriveSeedFromFile(file));
+		vm.runVM(file, seed);
 	}
 
 }
