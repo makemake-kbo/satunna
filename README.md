@@ -16,11 +16,13 @@ The seed is a positive intenger derived from the first 16 bytes of the blake2b h
 
 #### The Instruction Set
 
-The current VM instruction set is being worked on as satunna is being developed.
+The satunnaVM is a CISC, turing complete virtual machine that is designed to compute 64-bit integers and nothing more.  
+
+
+The current VM instruction set is being worked on as `satunna` is being developed.
 
 |instruction|dst|src|`src == dst ?`|operation|
 |-|-|-|-|-|
-|IADD_RS|R|R|`src = dst`|`dst = dst + (src << mod.shift) (+ imm32)`|
 |IADD_M|R|R|`src = 0`|`dst = dst + [mem]`|
 |ISUB_R|R|R|`src = imm32`|`dst = dst - src`|
 |ISUB_M|R|R|`src = 0`|`dst = dst - [mem]`|
