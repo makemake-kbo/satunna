@@ -15,4 +15,7 @@
 # vendor/
 
 # Ignore mod binary, built with `go build`
-mod
+satunna
+
+#VScode
+.vscode

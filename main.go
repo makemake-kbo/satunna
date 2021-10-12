@@ -21,8 +21,7 @@ func main() {
 		fmt.Println("File cant be read, hashing as string");
 		fmt.Println("string", deriveSeedFromString(inputData));
 	} else {
-		fmt.Println("xd", deriveSeedFromFile(file));
-		vm.runVM(file, seed);
+		vm.RunVM(file, deriveSeedFromFile(file));
 	}
 
 }

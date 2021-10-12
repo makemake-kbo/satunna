@@ -1,25 +1,49 @@
-package vm;
+package vm
 
 import (
 	//"golang.org/x/crypto/blake2b"
 	"os"
-	//"io"
+	"io"
 	//"strconv"
 	"bytes"
 	"fmt"
-	"unsafe"
 )
 
 /*read contents of the file as a uint64 from memory. what could go wrong?*/
-func readUInt64Unsafe(file *os.File) uint64 {
-    return *(*uint64)(unsafe.Pointer(&file[0]))
+func readFileAsUInt64Unsafe(file *os.File) []uint64 {
+	buf := bytes.NewBuffer(nil);
+	io.Copy(buf, file);
+
+	baf := []byte(buf.Bytes());
+
+	var n []uint64;
+
+	for i := 0; i < len(baf); i++ {
+		n = append(n, uint64(baf[i]));
+	}
+
+	return n;
 }
 
+/*RunVM is used to get an intenger representation of the file after it has been processed according to the seed*/
+func RunVM(file *os.File, seed uint32) uint64 {
+	var rawFileAsUInt64 []uint64 = readFileAsUInt64Unsafe(file);
+	fmt.Println("mi familia ", rawFileAsUInt64);
 
-/*we run the VM on the file here*/
-func runVM (file *os.File, seed uint32) uint64 {
-	var rawFileAsUInt64 uint64 = ReadUInt64Unsafe(file);
 
-	fmt.Println(seed);
+	return rawFileAsUInt64[0];
 
 }
+
+/*	buf := bytes.NewBuffer(nil);
+	io.Copy(buf, file);
+	fmt.Println("mi filebuf ", buf);
+
+	var mifamilia []byte = buf.Bytes();
+	var n []uint64;
+
+	for i := 0; i < len(mifamilia); i++ {
+		n = append(n, uint64(mifamilia[i]));
+	}
+
+	return n;*/
