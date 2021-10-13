@@ -21,7 +21,8 @@ func main() {
 		fmt.Println("File cant be read, hashing as string");
 		fmt.Println("string", deriveSeedFromString(inputData));
 	} else {
-		vm.RunVM(file, deriveSeedFromFile(file));
+		mifamilia, _ := os.Open(inputData); // file gets garbage collected but not when its passed to deriveSeedFromFile?
+		vm.RunVM(mifamilia, deriveSeedFromFile(file));
 	}
 
 }
