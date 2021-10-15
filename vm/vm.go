@@ -46,6 +46,8 @@ func RunVM(file *os.File, seed uint32) []uint64 {
 	fmt.Println(ss);
 
 	var processedFile []uint64
+
+	fmt.Println("Starting VM...");
 	for i := 0; i < len(ss); i++ {
 		switch string(ss[i]) {
 		case "0":

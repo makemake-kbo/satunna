@@ -4,18 +4,22 @@ import (
 	"golang.org/x/crypto/blake2b"
 	"os"
 	"io"
-	//"strconv"
 	"bytes"
 	"fmt"
 )
 
+
 func deriveSeedFromFile (file *os.File) uint32 {
 	var n uint32;
 	buf := bytes.NewBuffer(nil);
-	io.Copy(buf, file);
+	
+	/*primitive memory hardening*/
+	for i := 0; i < 16; i++ {
+		io.Copy(buf, file);
+	}
 
 	/*creates a new hash with 8 byte lenght*/
-	hash, err := blake2b.New(16, nil);
+	hash, err := blake2b.New(8, nil);
 	if err != nil {
 		panic(err);
 	}
@@ -28,7 +32,12 @@ func deriveSeedFromFile (file *os.File) uint32 {
 		n += uint32(bs[i]);
 	}
 
-	return n;
+	/*math.Pow doesnt work so we do this*/
+	var nj uint32; /*n gets GC'd if we use it in the for loop*/
+	for i := 0; i < int(n); i++ {
+		nj = n*n*n;
+	}
+	return nj;
 }
 
 
@@ -37,7 +46,7 @@ func deriveSeedFromString (string string) uint32 {
 	buf := []byte(string);
 
 	/*creates a new hash with 8 byte lenght*/
-	hash, err := blake2b.New(16, nil);
+	hash, err := blake2b.New(8, nil);
 	if err != nil {
 		panic(err);
 	}
