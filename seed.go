@@ -32,7 +32,8 @@ func deriveSeedFromFile (file *os.File) uint32 {
 		n += uint32(bs[i]);
 	}
 
-	/*math.Pow doesnt work so we do this*/
+	/* math.Pow doesnt work so we do this
+	 */
 	var nj uint32; /*n gets GC'd if we use it in the for loop*/
 	for i := 0; i < int(n); i++ {
 		nj = n*n*n;
@@ -62,5 +63,9 @@ func deriveSeedFromString (string string) uint32 {
 		n += uint32(bs[i]);
 	}
 
-	return n;
+	var nj uint32; /*n gets GC'd if we use it in the for loop*/
+	for i := 0; i < int(n); i++ {
+		nj = n*n*n;
+	}
+	return nj;
 }
