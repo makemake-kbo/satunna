@@ -34,7 +34,7 @@ func RunVM(file *os.File, seed uint32) []uint64 {
 
 	var processedFile []uint64
 	for i := 0; i < len(ss); i++ {
-		switch ss[i] {
+		switch string(ss[i]) {
 		case "0":
 			processedFile = IADD_M(rawFileAsUInt64);
 		case "1":
@@ -54,10 +54,10 @@ func RunVM(file *os.File, seed uint32) []uint64 {
 		case "8":
 			processedFile = ISIN_R(rawFileAsUInt64);
 		case "9":
-			processedFile = IADD_M(rawFileAsUInt64) * IADD_M(rawFileAsUInt64) * IADD_M(rawFileAsUInt64); // i ran out of ideas for opcodes
+			processedFile = IADD_M(rawFileAsUInt64); // i ran out of ideas for opcodes
+			processedFile = IADD_M(rawFileAsUInt64);
 		default:
 			panic("UNKNOWN OPCODE: EXECUTION ABORTED")
-			return
 		}
 	}
 
