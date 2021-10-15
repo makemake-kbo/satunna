@@ -30,8 +30,6 @@ The current VM instruction set is being worked on as `satunna` is being develope
 |IMUL_M|R|R|`src = 0`|`dst = dst * [mem]`|
 |IMULH_R|R|R|`src = dst`|`dst = (dst * src) >> 64`|
 |IMULH_M|R|R|`src = 0`|`dst = (dst * [mem]) >> 64`|
-|ISMULH_R|R|R|`src = dst`|`dst = (dst * src) >> 64` (signed)|
-|ISMULH_M|R|R|`src = 0`|`dst = (dst * [mem]) >> 64` (signed)|
 |IMUL_RCP|R|-|-|<code>dst = 2<sup>x</sup> / imm32 * dst</code>|
 |INEG_R|R|-|-|`dst = -dst`|
 |IXOR_R|R|R|`src = imm32`|`dst = dst ^ src`|
