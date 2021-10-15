@@ -23,10 +23,7 @@ func deriveSeedFromFile (file *os.File) uint32 {
 	hash.Write([]byte(buf.Bytes())); /*giving data from buffer here*/
 
 	bs := hash.Sum(nil);/*TODO: clean this up*/
-	/*TODO: Debbbuging prints*/
 	fmt.Println("seed hash value: ", bs);
-	fmt.Printf("seed hash type: %T\n", bs);
-
 	for i := 0; i < len(bs); i++ {
 		n += uint32(bs[i]);
 	}
