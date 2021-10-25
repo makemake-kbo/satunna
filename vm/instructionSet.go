@@ -55,7 +55,7 @@ func IMUL_M(src []uint64) []uint64 {
 	return ret;
 }
 
-
+// TODO: replace this with something that doesnt divide
 /* IMULH_M
  * adds array to itself and then divided by 2 2 times
  */
