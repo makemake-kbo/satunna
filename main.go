@@ -4,7 +4,7 @@ import (
 	"os"
 	"fmt"
 	"unsafe"
-	//"encoding/binary"
+	"encoding/base64"
 
 	"golang.org/x/crypto/blake2b"	
 	"github.com/makemake-kbo/satunna/vm"
@@ -35,6 +35,7 @@ func main() {
 		}
 
 		hash.Write(vm.RunVM(mifamilia, deriveSeedFromFile(file)));
+		fmt.Println("Hash: ", base64.URLEncoding.EncodeToString(hash.Sum(nil)));
 	}
 
 }

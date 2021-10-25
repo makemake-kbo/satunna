@@ -44,7 +44,6 @@ func RunVM(file *os.File, seed uint32) []byte {
 	var rawFileAsUInt64 []uint64 = readFileAsUInt64Unsafe(file);
 
 	ss := strconv.Itoa(int(seed));
-	fmt.Println(ss);
 
 	var processedFile []uint64
 
