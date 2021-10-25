@@ -45,8 +45,11 @@ func ISUB_R(src []uint64, dst []uint64) []uint64 {
  */
 func IMUL_M(src []uint64) []uint64 {
 	ret := make([]uint64, len(src));
+	/*we dont want to mulyiply by 0 here*/
 	for i := 0; i < len(src); i++ {
-		ret[i] = src[i] * src[i]; 
+		if src[i] != 0 {
+			ret[i] = src[i] * src[i];
+		}
 	}
 
 	return ret;
@@ -54,25 +57,28 @@ func IMUL_M(src []uint64) []uint64 {
 
 
 /* IMULH_M
- * adds array to itself and then divided by 2 64 times
+ * adds array to itself and then divided by 2 2 times
  */
 func IMULH_M(src []uint64) []uint64 {
 	ret := make([]uint64, len(src));
+	/*we dont want to mulyiply by 0 here*/
 	for i := 0; i < len(src); i++ {
-		ret[i] = (src[i] * src[i]) >> 64; 
+		if src[i] != 0 {
+			ret[i] = (src[i] * src[i]) >> 2;
+		}
 	}
 
 	return ret;
 }
 
 
-/* IMULHS_M
- * adds array to itself and then divided by 2 seed times
+/* IMULS_M
+ * multiplies array with seed
  */
-func IMULHS_M(src []uint64, seed uint32) []uint64 {
+func IMULS_M(src []uint64, seed uint32) []uint64 {
 	ret := make([]uint64, len(src));
 	for i := 0; i < len(src); i++ {
-		ret[i] = (src[i] * src[i]) >> seed; 
+		ret[i] = (src[i] * src[i]) * uint64(seed);
 	}
 
 	return ret;

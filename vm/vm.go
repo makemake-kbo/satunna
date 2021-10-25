@@ -63,8 +63,8 @@ func RunVM(file *os.File, seed uint32) []byte {
 			processedFile = IMULH_M(rawFileAsUInt64);
 			fmt.Println("IMUL_M");
 		case "4":
-			processedFile = IMULHS_M(rawFileAsUInt64, seed);
-			fmt.Println("IMULHS_M");
+			processedFile = IMULS_M(rawFileAsUInt64, seed);
+			fmt.Println("IMULS_M");
 		case "5":
 			processedFile = IXOR_R(rawFileAsUInt64, IMUL_M(rawFileAsUInt64));
 			fmt.Println("IXOR_R");
