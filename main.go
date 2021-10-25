@@ -1,12 +1,19 @@
 package main;
 
 import (
-	//"golang.org/x/crypto/blake2b"
 	"os"
 	"fmt"
-	
+	"unsafe"
+	//"encoding/binary"
+
+	"golang.org/x/crypto/blake2b"	
 	"github.com/makemake-kbo/satunna/vm"
 )
+
+func toByteArray(i uint64) (arr []byte) {
+	*(*uint64)(unsafe.Pointer(&arr[0])) = i
+	return
+}
 
 func main() {
 
@@ -18,8 +25,16 @@ func main() {
 		fmt.Println("File cant be read, hashing as string");
 		fmt.Println("string", deriveSeedFromString(inputData));
 	} else {
-		mifamilia, _ := os.Open(inputData); // file gets garbage collected but not when its passed to deriveSeedFromFile?
-		vm.RunVM(mifamilia, deriveSeedFromFile(file));
+		mifamilia, _ := os.Open(inputData); /*file gets garbage collected but not when its passed to deriveSeedFromFile?*/
+		
+		/*run VM on the file*/
+
+		hash, err := blake2b.New512(nil);
+		if err != nil {
+			panic(err);
+		}
+
+		hash.Write(vm.RunVM(mifamilia, deriveSeedFromFile(file)));
 	}
 
 }

@@ -32,7 +32,7 @@ func deriveSeedFromFile (file *os.File) uint32 {
 		n += uint32(bs[i]);
 	}
 
-	/* math.Pow doesnt work so we do this
+	/* clean this up
 	 */
 	var nj uint32; /*n gets GC'd if we use it in the for loop*/
 	for i := 0; i < int(n); i++ {

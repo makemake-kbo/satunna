@@ -6,6 +6,7 @@ import (
 	"io"
 	"strconv"
 	"bytes"
+	"encoding/binary"
 	"fmt"
 )
 
@@ -39,7 +40,7 @@ func readFileAsUInt64Unsafe(file *os.File) []uint64 {
 }
 
 /*RunVM is used to get an intenger representation of the file after it has been processed according to the seed*/
-func RunVM(file *os.File, seed uint32) []uint64 {
+func RunVM(file *os.File, seed uint32) []byte {
 	var rawFileAsUInt64 []uint64 = readFileAsUInt64Unsafe(file);
 
 	ss := strconv.Itoa(int(seed));
@@ -86,6 +87,17 @@ func RunVM(file *os.File, seed uint32) []uint64 {
 		}
 	}
 
-	return processedFile;
+	var result uint64;
+
+	for i := 0; i < len(processedFile); i++ {
+		result += processedFile[i];
+	}
+
+	b := make([]byte, 8);
+	binary.LittleEndian.PutUint64(b, result);
+
+	fmt.Println("Final output: ", b);
+
+	return b;
 
 }
