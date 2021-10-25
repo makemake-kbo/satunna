@@ -92,10 +92,10 @@ func RunVM(file *os.File, seed uint32) []byte {
 		result += processedFile[i];
 	}
 
-	b := make([]byte, 8);
+	b := make([]byte, binary.MaxVarintLen64);
 	binary.LittleEndian.PutUint64(b, result);
 
-	fmt.Println("Final output: ", b);
+	// fmt.Println("Final output: ", b);
 
 	return b;
 
