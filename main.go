@@ -10,11 +10,6 @@ import (
 	"github.com/makemake-kbo/satunna/vm"
 )
 
-func toByteArray(i uint64) (arr []byte) {
-	*(*uint64)(unsafe.Pointer(&arr[0])) = i
-	return
-}
-
 func main() {
 
 	inputData := os.Args[1];
