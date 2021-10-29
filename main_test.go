@@ -10,7 +10,7 @@ import (
 	"github.com/makemake-kbo/satunna/vm"
 )
 
-func TestHelloName(t *testing.T) {
+func TestHashOnFile(t *testing.T) {
 	//want := "cZQw4YPVvuEKljZJ7cT3La6fxQs9oqwoR1-haKj6BNofit-plK-AgXGJMFsPlPEFTnkUkSQrngvwOjVVWyQkgA===="
 
 	file, err := os.Open(".gitignore");
