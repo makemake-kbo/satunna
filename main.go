@@ -3,7 +3,6 @@ package main;
 import (
 	"os"
 	"fmt"
-	"unsafe"
 	"encoding/base64"
 
 	"golang.org/x/crypto/blake2b"	
